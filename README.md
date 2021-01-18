@@ -4,9 +4,12 @@
   *.sh
 - BACKUP path from env  
 - backup not working because cannot get root's env from crontab user
-- db_config folder
+- docker_mysql folder
 - .env
+- nginx service
 
 # shortcuts
 use `yarn` 
+
+
 
