@@ -1,8 +1,8 @@
 
 ############ DB BACKUP ###########
 # test
-* * * * * root . /root/project_env.sh; sh /root/scripts/backup.sh
-# TODO remove test
+# * * * * * root . /root/project_env.sh; sh /root/scripts/backup.sh
+
 # real
 5 0 * * * root . /root/project_env.sh; sh /root/scripts/backup.sh
 
