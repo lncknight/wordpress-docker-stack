@@ -1,0 +1,15 @@
+{
+  "name": "wordpress-docker",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "bash": "docker-compose exec wp bash",
+    "restart": "docker-compose down && docker-compose up -d",
+    "start": "docker-compose up -d --build",
+    "stop": "docker-compose down",
+    "debug": "docker-compose exec wp bash -c \"watch -n 3 du -sh /tmp/*\"",
+    "debug_1": "docker-compose exec mysql bash -c \"watch -n 1 date\"",
+    "log": "docker-compose logs --tail 222 -f"
+  }
+}
