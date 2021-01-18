@@ -7,6 +7,7 @@
 - docker_mysql folder
 - .env
 - nginx service
+- wp data backup error, env not retrieved
 
 # shortcuts
 use `yarn` 

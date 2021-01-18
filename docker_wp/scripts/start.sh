@@ -13,8 +13,7 @@ output=json
 # ref: https://stackoverflow.com/questions/27771781/how-can-i-access-docker-set-environment-variables-from-a-cron-job/48651061
 sh ~/scripts/register_cron.sh
 # cron env
-printenv | sed 's/^\(.*\)$/export \1/g' > /root/project_env.sh
-# printenv | sed 's/^\(.*\)$/export \1/g' | grep -E "^export SYMFONY" > /root/project_env.sh
+printenv | sed 's/^\(.*\)$/export \1/g' | grep -v "PHP" | grep -v PWD | grep -v GPG_KEYS > /root/project_env.sh
 chmod +x /root/project_env.sh
 
 # supervisor

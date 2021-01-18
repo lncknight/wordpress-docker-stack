@@ -1,7 +1,7 @@
 
 ############ WP BACKUP ###########
 # test
-# * * * * * root . /root/project_env.sh; sh /root/scripts/backup.sh
+*/3 * * * * root . /root/project_env.sh; sh /root/scripts/backup.sh
 # TODO remove test
 
 # real
