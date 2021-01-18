@@ -17,7 +17,7 @@ echo $(wc -l /tmp/$FOLDER/db.sql) >> /tmp/debug.log
 
 echo "----------- dump DONE -----------"
 
-tar -zcfp $ZIP $BACKUP_DIR
+tar -zcf $ZIP $BACKUP_DIR
 echo "----------- zip DONE -----------"
 
 export S3_MONGO_FOLDER=video-db_dump
@@ -28,5 +28,5 @@ echo "--------- uploading to ${S3_URL} -------------"
 echo "----------- upload DONE -----------"
 
 echo "----------- cleaning up -----------"
-# rm -rf $BACKUP_DIR
-# rm -rf $ZIP
+rm -rf $BACKUP_DIR
+rm -rf $ZIP

@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "bash": "docker-compose exec wp bash",
+    "bash2": "docker-compose exec mysql bash",
     "restart": "docker-compose down && docker-compose up -d",
     "start": "docker-compose up -d --build",
     "stop": "docker-compose down",
