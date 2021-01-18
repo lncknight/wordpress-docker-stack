@@ -11,5 +11,11 @@
 # shortcuts
 use `yarn` 
 
-
-
+# wp-config
+modify wp-config.php to be like this
+```
+define('DB_NAME', getenv('DB_NAME'));
+define('DB_USER', getenv('DB_USER'));
+define('DB_PASSWORD', getenv('DB_PASSWD'));
+define('DB_HOST', getenv('DB_HOST'));
+```
