@@ -6,11 +6,16 @@
   "scripts": {
     "bash": "docker-compose exec wp bash",
     "bash2": "docker-compose exec mysql bash",
-    "restart": "docker-compose down && docker-compose up -d",
+    "restart": "docker-compose down && docker-compose up -d --build",
     "start": "docker-compose up -d --build",
     "stop": "docker-compose down",
     "debug": "docker-compose exec wp bash -c \"watch -n 3 du -sh /tmp/*\"",
     "debug_1": "docker-compose exec mysql bash -c \"watch -n 1 date\"",
     "log": "docker-compose logs --tail 222 -f"
+  },
+  "dependencies": {
+    "cron": "^1.8.2",
+    "lodash": "^4.17.20",
+    "moment": "^2.29.1"
   }
 }
