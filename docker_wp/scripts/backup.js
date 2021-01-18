@@ -19,8 +19,8 @@ let backup = async () => {
 
 
   console.log('copying..')
-  // await execSync(`rsync -rhp --exclude="wp-content/updraft" --exclude="wp-content/uploads" /var/www/html/ ${backupDir}`)
-  await execSync(`rsync -rhp --exclude="wp-content" /var/www/html/ ${backupDir}`)
+  await execSync(`rsync -rhp --exclude="wp-content/updraft" --exclude="wp-content/uploads" /var/www/html/ ${backupDir}`)
+  // await execSync(`rsync -rhp --exclude="wp-content" /var/www/html/ ${backupDir}`)
 
   console.log('zipping..')
   await execSync(`tar -zcf ${zipPath} ${backupDir}`)
