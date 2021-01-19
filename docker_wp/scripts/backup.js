@@ -7,10 +7,15 @@ let moment = require('moment')
 let bb = require('bluebird')
 let {
   BACKUP_S3_WP_DATA_PREFIX,
-  BACKUP_S3_BUCKET
+  BACKUP_S3_BUCKET,
+  BACKUP_DISABLE,
 } = process.env
 
 let backup = async () => {
+
+  if (BACKUP_DISABLE){
+    return 
+  }
 
   let folder = moment().format('YMMDD_HHmmss')
   let backupDir = `/tmp/${folder}`
