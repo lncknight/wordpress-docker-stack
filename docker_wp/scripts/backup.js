@@ -15,8 +15,8 @@ let {
 
 let backup = async () => {
 
-  if (BACKUP_DISABLE) {
-    return
+  if (BACKUP_DISABLE === "1"){
+    return 
   }
 
   let folder = moment().format('YMMDD_HHmmss')
@@ -29,9 +29,8 @@ let backup = async () => {
   commandParts.push(`rsync -rhp`)
   chain(BACKUP_WP_EXCLUDE_FOLDERS)
     .split(',')
-    .trim()
     .map(r => {
-      commandParts.push(`--exclude="${r}"`)
+      commandParts.push(`--exclude="${trim(r)}"`)
     })
     .value()
   // --exclude="wp-content/updraft"  
