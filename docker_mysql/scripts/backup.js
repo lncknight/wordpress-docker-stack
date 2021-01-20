@@ -6,7 +6,6 @@ let _ = require('lodash')
 let moment = require('moment')
 let bb = require('bluebird')
 let {
-  BACKUP_S3_WP_DATA_PREFIX,
   BACKUP_S3_PREFIX,
   BACKUP_S3_BUCKET,
   BACKUP_DISABLE,
@@ -15,11 +14,13 @@ let {
   DB_NAME,
   DB_HOST,
   DB_PASSWD,
+
+  TEST_RUN_CRON,
 } = process.env
 
 let backup = async () => {
 
-  if (BACKUP_DISABLE){
+  if (BACKUP_DISABLE === "1"){
     return 
   }
   
@@ -56,8 +57,12 @@ let backup = async () => {
   })
 }
 
+console.log('node-cron started', {
+  env: process.env
+})
+
 // backup() // test now
-// new CronJob('*/10 * * * * *', backup, null, true, 'Asia/Hong_Kong'); // test run
+TEST_RUN_CRON === "1" && new CronJob('*/10 * * * * *', backup, null, true, 'Asia/Hong_Kong'); // test run
 
 // live
 new CronJob('0 13 * * *', backup, null, true, 'Asia/Hong_Kong');

@@ -9,6 +9,12 @@
 - nginx service
 - wp data backup error, env not retrieved
 
+# TODO 2
+- support exclude folders from backup script BACKUP_WP_EXCLUDE_FOLDERS
+  DONE
+- DB_USE_EXTERNAL
+    not working
+
 # shortcuts
 use `yarn` 
 

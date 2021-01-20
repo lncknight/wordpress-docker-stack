@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/bash
 # aws credentials
 [[ ! -d ~/.aws ]] || mkdir -p ~/.aws
 echo "[default]
