@@ -28,7 +28,7 @@ services:
     ports:
       - "${WP_EXPOSE_PORT:-80}:80" # change ip if required
     volumes:
-      - "${WP_DATA_DIR}:-./wp/data:/var/www/html" # Full wordpress project
+      - "${WP_DATA_DIR:-./wp/data}:/var/www/html" # Full wordpress project
       - ./docker_wp/scripts:/root/scripts
       - ./docker_wp/scripts/supervisor/conf.d:/etc/supervisor/conf.d
     # depends_on:
