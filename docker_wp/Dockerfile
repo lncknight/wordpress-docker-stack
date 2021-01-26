@@ -1,11 +1,12 @@
 FROM wordpress:php7.4-apache
 
 RUN apt update -y \
-    && apt install curl python -y
+    && apt install curl python3 python3-pip -y
 
-RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
-    && python get-pip.py \
-    && pip install awscli
+# RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
+#     && python get-pip.py \
+#     && pip install awscli
+RUN pip3 install awscli
 
 RUN apt install supervisor -y
 RUN apt install procps -y
