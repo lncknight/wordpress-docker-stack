@@ -1,3 +1,28 @@
+# start
+```
+yarn start
+```
+
+# shortcuts
+use `yarn`
+
+# IMPORTANT
+## stop db
+run below command, if it is using external db, e.g. RDS etc
+```
+yarn stop_db
+```
+## make sure wp-config.php is updated
+
+# wp-config
+modify wp-config.php to be like this
+```
+define('DB_NAME', getenv('DB_NAME'));
+define('DB_USER', getenv('DB_USER'));
+define('DB_PASSWORD', getenv('DB_PASSWD'));
+define('DB_HOST', getenv('DB_HOST'));
+```
+
 # TODO
 - block access
   *.md
@@ -14,15 +39,3 @@
   DONE
 - DB_USE_EXTERNAL
     not working
-
-# shortcuts
-use `yarn` 
-
-# wp-config
-modify wp-config.php to be like this
-```
-define('DB_NAME', getenv('DB_NAME'));
-define('DB_USER', getenv('DB_USER'));
-define('DB_PASSWORD', getenv('DB_PASSWD'));
-define('DB_HOST', getenv('DB_HOST'));
-```

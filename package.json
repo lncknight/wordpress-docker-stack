@@ -8,6 +8,7 @@
     "bash2": "npm run bash:mysql",
     "bash:wp": "docker-compose exec wp bash",
     "bash:mysql": "docker-compose exec mysql bash",
+    "stop_db": "docker-compose exec mysql bash -c 'supervisorctl stop mysql'",
     "log:mysql": "docker-compose exec mysql bash -c \"tail -n 100 -f /var/log/supervisor/*\"",
     "log:wp": "docker-compose exec wp bash -c \"tail -n 100 -f /var/log/supervisor/*\"",
     "supervisor:mysql": "docker-compose exec mysql bash -c \"supervisorctl status\"",
