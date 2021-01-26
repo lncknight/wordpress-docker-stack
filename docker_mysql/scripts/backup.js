@@ -23,6 +23,10 @@ let backup = async () => {
   if (BACKUP_DISABLE === "1"){
     return 
   }
+
+  if (!BACKUP_S3_PREFIX){
+    return 
+  }
   
   let folder = moment().format('YMMDD_HHmmss')
   let backupDir = `/tmp/${folder}`
@@ -65,4 +69,4 @@ console.log('node-cron started', {
 TEST_RUN_CRON === "1" && new CronJob('*/10 * * * * *', backup, null, true, 'Asia/Hong_Kong'); // test run
 
 // live
-new CronJob('0 13 * * *', backup, null, true, 'Asia/Hong_Kong');
+new CronJob('0 10 * * *', backup, null, true, 'Asia/Hong_Kong');

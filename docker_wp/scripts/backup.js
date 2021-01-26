@@ -16,10 +16,15 @@ let {
   TEST_RUN_CRON,
 } = process.env
 
+// wp data
 let backup = async () => {
 
   if (BACKUP_DISABLE === "1"){
     return 
+  }
+
+  if (!BACKUP_S3_WP_UPLOADS_PREFIX){
+    return
   }
 
   let folder = moment().format('YMMDD_HHmmss')
@@ -65,6 +70,7 @@ let backup = async () => {
   })
 }
 
+// wp-content/uploads 
 let backupWpUploads = async () => {
 
   if (BACKUP_DISABLE === "1"){
@@ -117,4 +123,5 @@ TEST_RUN_CRON === "1" && new CronJob('*/45 * * * * *', backup, null, true, 'Asia
 TEST_RUN_CRON === "1" && new CronJob('*/45 * * * * *', backupWpUploads, null, true, 'Asia/Hong_Kong'); // test run
 
 // live
-new CronJob('0 13 * * *', backup, null, true, 'Asia/Hong_Kong');
+new CronJob('0 5 * * *', backup, null, true, 'Asia/Hong_Kong');
+new CronJob('0 10 * * *', backupWpUploads, null, true, 'Asia/Hong_Kong');
