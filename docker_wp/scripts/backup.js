@@ -27,7 +27,7 @@ let backup = async () => {
     return
   }
 
-  let folder = moment().format('YMMDD_HHmmss')
+  let folder = `${moment().format('YMMDD_HHmmss')}-data`
   let backupDir = `/tmp/${folder}`
   let zipPath = `/tmp/${folder}.tar.gz`
   let s3Url = `s3://${BACKUP_S3_BUCKET}/${BACKUP_S3_WP_DATA_PREFIX}/${folder}.tar.gz`
@@ -81,7 +81,7 @@ let backupWpUploads = async () => {
     return
   }
 
-  let folder = moment().format('YMMDD_HHmmss')
+  let folder = `${moment().format('YMMDD_HHmmss')}-uploads`
   let backupDir = `/tmp/${folder}`
   let zipPath = `/tmp/${folder}.tar.gz`
   let s3Url = `s3://${BACKUP_S3_BUCKET}/${BACKUP_S3_WP_UPLOADS_PREFIX}/${folder}.tar.gz`
