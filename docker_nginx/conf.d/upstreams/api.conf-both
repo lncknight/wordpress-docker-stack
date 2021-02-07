@@ -1,0 +1,4 @@
+upstream api_upstream {
+  server api;
+  server api2;
+}
