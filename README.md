@@ -37,6 +37,10 @@ yarn stop_db
 # wp-config
 modify wp-config.php to be like this
 ```
+# dirty for for wordpress recognise https from reverse proxy
+# ref: https://developer.wordpress.org/reference/functions/is_ssl/
+$_SERVER['HTTPS'] = $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https' ? 'on' : 'off';
+
 define('DB_NAME', getenv('DB_NAME'));
 define('DB_USER', getenv('DB_USER'));
 define('DB_PASSWORD', getenv('DB_PASSWD'));
