@@ -23,7 +23,7 @@ let backup = async () => {
     return 
   }
 
-  if (!BACKUP_S3_WP_UPLOADS_PREFIX){
+  if (!BACKUP_S3_WP_DATA_PREFIX){
     return
   }
 
