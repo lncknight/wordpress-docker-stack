@@ -53,3 +53,8 @@ define('DB_HOST', getenv('DB_HOST'));
   DONE
 - DB_USE_EXTERNAL
     not working
+- support ARM & Graviton2 instance
+    - ARM database: mariadb has more ARM supports
+    - Wordpress starting 5.7 support PHP 8 (wp official container supported)
+    - and NGINX for sure
+
