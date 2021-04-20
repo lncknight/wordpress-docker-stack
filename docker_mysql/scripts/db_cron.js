@@ -21,7 +21,7 @@ let {
 } = process.env
 
 let turnOffDb = async () => {
-  if (DB_USE_EXTERNAL !== '0'){
+  if (DB_USE_EXTERNAL === '0'){
     return 
   }
 
