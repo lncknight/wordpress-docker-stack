@@ -1,4 +1,4 @@
-FROM wordpress:php8.0-apache
+FROM wordpress:php7.4-apache
 
 RUN apt update -y \
     && apt install curl python3 python3-pip -y
