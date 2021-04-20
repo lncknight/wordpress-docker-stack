@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "update": "git pull origin master",
     "bash": "npm run bash:wp",
     "bash:wp": "docker-compose exec wp bash",
     "bash:nginx": "docker-compose exec nginx bash",
