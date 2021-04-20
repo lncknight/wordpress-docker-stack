@@ -16,3 +16,5 @@ RUN apt install rsync -y
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 RUN apt install nodejs -y
 RUN npm -g i nodemon
+
+RUN docker-php-ext-install pdo_mysql
