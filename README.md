@@ -41,6 +41,12 @@ modify wp-config.php to be like this
 # ref: https://developer.wordpress.org/reference/functions/is_ssl/
 $_SERVER['HTTPS'] = $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https' ? 'on' : 'off';
 
+// Fix incorrect IP when using Cloudflare
+if ( array_key_exists( 'HTTP_CF_CONNECTING_IP', $_SERVER ) ) { 
+	$_SERVER['REMOTE_ADDR'] = $_SERVER['HTTP_CF_CONNECTING_IP']; 
+}
+
+// database
 define('DB_NAME', getenv('DB_NAME'));
 define('DB_USER', getenv('DB_USER'));
 define('DB_PASSWORD', getenv('DB_PASSWD'));

@@ -15,8 +15,26 @@ let {
   DB_HOST,
   DB_PASSWD,
 
+  DB_USE_EXTERNAL,
+
   TEST_RUN_CRON,
 } = process.env
+
+let turnOffDb = async () => {
+  if (DB_USE_EXTERNAL !== '0'){
+    return 
+  }
+
+  try {
+    await execSync('supervisorctl stop mysql')
+    console.log('stopped local database')
+  }
+  catch (err){
+    console.log('error on stopping database', {
+      err
+    })
+  }
+}
 
 let backup = async () => {
 
@@ -70,3 +88,4 @@ TEST_RUN_CRON === "1" && new CronJob('*/10 * * * * *', backup, null, true, 'Asia
 
 // live
 new CronJob('0 10 * * *', backup, null, true, 'Asia/Hong_Kong');
+new CronJob('* * * * *', turnOffDb, null, true, 'Asia/Hong_Kong');

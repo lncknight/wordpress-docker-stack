@@ -5,7 +5,6 @@
   "license": "MIT",
   "scripts": {
     "bash": "npm run bash:wp",
-    "bash2": "npm run bash:mysql",
     "bash:wp": "docker-compose exec wp bash",
     "bash:nginx": "docker-compose exec nginx bash",
     "bash:mysql": "docker-compose exec mysql bash",
@@ -16,8 +15,8 @@
     "supervisor:mysql": "docker-compose exec mysql bash -c \"supervisorctl status\"",
     "supervisor:wp": "docker-compose exec wp bash -c \"supervisorctl status\"",
     "restart": "docker-compose down && docker-compose up -d --build",
-    "start": "docker-compose up -d --build",
-    "stop": "docker-compose down",
+    "up": "docker-compose up -d --build",
+    "down": "docker-compose down",
     "debug": "docker-compose exec wp bash -c \"watch -n 3 du -sh /tmp/*\"",
     "debug_1": "docker-compose exec mysql bash -c \"watch -n 1 date\"",
     "log": "docker-compose logs --tail 222 -f"
