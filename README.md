@@ -53,6 +53,14 @@ define('DB_PASSWORD', getenv('DB_PASSWD'));
 define('DB_HOST', getenv('DB_HOST'));
 ```
 
+# modx - config.inc.php
+```
+define('MODX_SERVER', getenv('DB_HOST'));
+define('MODX_USER', getenv('DB_USER'));
+define('MODX_PASSWORD', getenv('DB_PASSWD'));
+define('MODX_DBASE', getenv('DB_NAME'));
+define('MODX_SUBDIR', '');
+```
 
 # TODO 2
 - support exclude folders from backup script BACKUP_WP_EXCLUDE_FOLDERS
