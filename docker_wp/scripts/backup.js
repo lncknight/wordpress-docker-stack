@@ -119,8 +119,15 @@ let backupWpUploads = async () => {
 }
 
 // backup() // test now
-TEST_RUN_CRON === "1" && new CronJob('*/45 * * * * *', backup, null, true, 'Asia/Hong_Kong'); // test run
-TEST_RUN_CRON === "1" && new CronJob('*/45 * * * * *', backupWpUploads, null, true, 'Asia/Hong_Kong'); // test run
+let testCronSchedule = '*/10 * * * * *'
+if (TEST_RUN_CRON === '0'){
+  testCronSchedule = null
+}
+else if (TEST_RUN_CRON !== '1'){
+  testCronSchedule = TEST_RUN_CRON
+}
+!!TEST_RUN_CRON && new CronJob(testCronSchedule, backup, null, true, 'Asia/Hong_Kong'); // test run
+!!TEST_RUN_CRON && new CronJob(testCronSchedule, backupWpUploads, null, true, 'Asia/Hong_Kong'); // test run
 
 // live
 new CronJob('0 5 * * *', backup, null, true, 'Asia/Hong_Kong');

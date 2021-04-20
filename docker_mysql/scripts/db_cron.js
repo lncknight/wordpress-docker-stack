@@ -84,7 +84,14 @@ console.log('node-cron started', {
 })
 
 // backup() // test now
-TEST_RUN_CRON === "1" && new CronJob('*/10 * * * * *', backup, null, true, 'Asia/Hong_Kong'); // test run
+let testCronSchedule = '*/45 * * * * *'
+if (TEST_RUN_CRON === '0'){
+  testCronSchedule = null
+}
+else if (TEST_RUN_CRON !== '1'){
+  testCronSchedule = TEST_RUN_CRON
+}
+!!TEST_RUN_CRON && new CronJob(testCronSchedule, backup, null, true, 'Asia/Hong_Kong'); // test run
 
 // live
 new CronJob('0 10 * * *', backup, null, true, 'Asia/Hong_Kong');
