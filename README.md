@@ -1,6 +1,6 @@
 # start
 ```
-yarn start
+yarn up
 ```
 
 # nginx config on front server
@@ -26,12 +26,6 @@ yarn start
 # shortcuts
 use `yarn`
 
-# IMPORTANT
-## stop db
-run below command, if it is using external db, e.g. RDS etc
-```
-yarn stop_db
-```
 ## make sure wp-config.php is updated
 
 # wp-config
@@ -46,11 +40,18 @@ if ( array_key_exists( 'HTTP_CF_CONNECTING_IP', $_SERVER ) ) {
 	$_SERVER['REMOTE_ADDR'] = $_SERVER['HTTP_CF_CONNECTING_IP']; 
 }
 
+// disable FTP
+define('FS_METHOD','direct');
+
 // database
 define('DB_NAME', getenv('DB_NAME'));
 define('DB_USER', getenv('DB_USER'));
 define('DB_PASSWORD', getenv('DB_PASSWD'));
 define('DB_HOST', getenv('DB_HOST'));
+
+define( 'DB_CHARSET', 'utf8mb4' ); // recommended
+define( 'DB_COLLATE', '' );
+
 ```
 
 # modx - config.inc.php
@@ -60,6 +61,20 @@ define('MODX_USER', getenv('DB_USER'));
 define('MODX_PASSWORD', getenv('DB_PASSWD'));
 define('MODX_DBASE', getenv('DB_NAME'));
 define('MODX_SUBDIR', '');
+```
+
+# trouble shoot
+```
+chmod -R 775 /var/www/html
+chown -R www-data /var/www/
+# trigger a submit on Permalinks spage
+```
+
+# manual import resource
+## wordpress releases download
+https://wordpress.org/download/releases/
+```
+cat wp-includes/version.php | grep -i wp_version
 ```
 
 # TODO 2
