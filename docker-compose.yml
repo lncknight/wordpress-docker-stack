@@ -16,7 +16,10 @@ services:
       - "${WP_EXPOSE_PORT}:80"
     env_file: 
       - .env
-  
+    logging:
+      options:
+        max-size: 500m
+          
   wp:
     # image: wordpress:php7.4-apache
     build: ./docker_wp/
@@ -33,6 +36,9 @@ services:
     env_file: 
       - .env
     command: sh /root/scripts/start.sh
+    logging:
+      options:
+        max-size: 500m
 
   # wpcli:
   #  image: wordpress:cli
@@ -61,8 +67,10 @@ services:
     command: sh /root/scripts/start.sh
     env_file: 
       - .env
-    
-    
+    logging:
+      options:
+        max-size: 500m 
+      
     
     
     
