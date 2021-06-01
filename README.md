@@ -63,10 +63,19 @@ define('MODX_DBASE', getenv('DB_NAME'));
 define('MODX_SUBDIR', '');
 ```
 
-# trouble shoot
+# troubleshoot
+## best practise permission
+- ref: https://stackoverflow.com/questions/18352682/correct-file-permissions-for-wordpress
+
 ```
-chmod -R 775 /var/www/html
-chown -R www-data /var/www/
+cd /var/www/html
+
+chown www-data:www-data  -R * # Let Apache be owner
+find . -type d -exec chmod 755 {} \;  # Change directory permissions rwxr-xr-x
+find . -type f -exec chmod 644 {} \;  # Change file permissions rw-r--r--
+
+chmod 440 wp-config.php 
+
 # trigger a submit on Permalinks spage
 ```
 
