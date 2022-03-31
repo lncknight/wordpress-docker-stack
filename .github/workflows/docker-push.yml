@@ -24,7 +24,7 @@ jobs:
       - name: build server info
         run: |
           free -m 
-          top -n 1
+          cat /proc/cpuinfo
  
       - name: Build image
         run: docker buildx build . --file docker_wp/Dockerfile --tag $IMAGE_NAME
