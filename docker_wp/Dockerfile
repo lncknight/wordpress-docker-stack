@@ -8,10 +8,7 @@ RUN apt update -y \
 #     && pip install awscli
 RUN pip3 install awscli
 
-RUN apt install supervisor -y
-RUN apt install procps -y
-RUN apt install cron -y
-RUN apt install rsync -y
+RUN apt install supervisor procps cron rsync-y
 
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 RUN apt install nodejs -y
