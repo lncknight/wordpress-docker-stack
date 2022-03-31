@@ -13,7 +13,7 @@ env:
 
 jobs:
 
-  nginx:
+  wp:
 
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
@@ -54,7 +54,7 @@ jobs:
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
 
-  wp:
+  nginx:
 
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
