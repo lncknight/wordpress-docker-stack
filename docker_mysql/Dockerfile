@@ -1,5 +1,7 @@
 FROM mysql:5.7.26
 
+RUN apt-key list
+
 # key expired, update key
 # https://serverok.in/mysql-8-apt-error-the-following-signatures-were-invalid
 # https://stackoverflow.com/questions/66217436/gpg-keyserver-receive-failed-no-name
