@@ -21,6 +21,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: build server info
+        run: |
+          free -m 
+          top -n 1
+ 
       - name: Build image
         run: docker buildx build . --file docker_wp/Dockerfile --tag $IMAGE_NAME
 
