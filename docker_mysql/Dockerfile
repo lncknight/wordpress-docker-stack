@@ -18,7 +18,7 @@ RUN apt-key list | grep expired
 
 # https://askubuntu.com/questions/74345/how-do-i-bypass-ignore-the-gpg-signature-checks-of-apt
 # RUN apt update -y --allow-unauthenticated
-RUN apt update -y --allow-unauthenticated
+RUN apt update -y
 RUN apt install curl python3 python3-pip supervisor procps cron rsync -y
 
 # RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
