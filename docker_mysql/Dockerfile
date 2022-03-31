@@ -5,7 +5,8 @@ RUN apt-key list
 # key expired, update key
 # https://serverok.in/mysql-8-apt-error-the-following-signatures-were-invalid
 # https://stackoverflow.com/questions/66217436/gpg-keyserver-receive-failed-no-name
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8C718D3B5072E1F5
+# RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8C718D3B5072E1F5
+RUN apt-key adv --refresh-keys
 RUN apt-key list
 
 RUN apt update -y
