@@ -47,9 +47,9 @@ jobs:
           # Use Docker `latest` tag convention
           [ "$VERSION" == "master" ] && VERSION=latest
 
+          VERSION=wp
           echo IMAGE_ID=$IMAGE_ID
-          echo VERSION=wp
-          # echo VERSION=$VERSION
+          echo VERSION=$VERSION
 
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
@@ -88,9 +88,9 @@ jobs:
           # Use Docker `latest` tag convention
           [ "$VERSION" == "master" ] && VERSION=latest
 
+          VERSION=nginx
           echo IMAGE_ID=$IMAGE_ID
-          echo VERSION=nginx
-          # echo VERSION=$VERSION
+          echo VERSION=$VERSION
 
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
