@@ -74,10 +74,12 @@ let backup = async () => {
 let backupWpUploads = async () => {
 
   if (BACKUP_DISABLE === "1"){
+    console.log('backup disabled', {BACKUP_DISABLE})
     return 
   }
 
   if (!BACKUP_S3_WP_UPLOADS_PREFIX){
+    console.log('backup disabled', {BACKUP_S3_WP_UPLOADS_PREFIX})
     return
   }
 
@@ -126,8 +128,11 @@ if (TEST_RUN_CRON === '0'){
 else if (TEST_RUN_CRON !== '1'){
   testCronSchedule = TEST_RUN_CRON
 }
-!!testCronSchedule && new CronJob(testCronSchedule, backup, null, true, 'Asia/Hong_Kong'); // test run
-!!testCronSchedule && new CronJob(testCronSchedule, backupWpUploads, null, true, 'Asia/Hong_Kong'); // test run
+if (!!testCronSchedule){
+  console.log('test mode', {testCronSchedule})
+  new CronJob(testCronSchedule, backup, null, true, 'Asia/Hong_Kong'); // test run
+  new CronJob(testCronSchedule, backupWpUploads, null, true, 'Asia/Hong_Kong'); // test run
+}
 
 // live
 new CronJob('0 5 * * *', backup, null, true, 'Asia/Hong_Kong');
