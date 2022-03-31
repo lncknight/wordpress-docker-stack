@@ -96,3 +96,4 @@ cat wp-includes/version.php | grep -i wp_version
     - Wordpress starting 5.7 support PHP 8 (wp official container supported)
     - and NGINX for sure
 
+
