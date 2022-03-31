@@ -1,5 +1,5 @@
 # FROM mysql:5.7.26
-FROM mysql:5.7.37-oracle
+FROM mysql:5.7.37-debian
 
 # # https://ubuntuforums.org/showthread.php?t=2415997
 # ADD key.txt /root
