@@ -1,5 +1,8 @@
 FROM mysql:5.7.26
 
+RUN which apt
+RUN cat /etc/*release*
+
 RUN apt update -y
 RUN apt install curl python3 python3-pip supervisor procps cron rsync -y
 
