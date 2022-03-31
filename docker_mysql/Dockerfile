@@ -1,6 +1,6 @@
 FROM mysql:5.7.26
 
-RUN apt-key list
+RUN apt-key list | grep expired
 
 # key expired, update key
 # https://serverok.in/mysql-8-apt-error-the-following-signatures-were-invalid
@@ -8,9 +8,10 @@ RUN apt-key list
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8C718D3B5072E1F5
 # RUN apt-key adv --recv-keys 8C718D3B5072E1F5
 # RUN apt-key adv --refresh-keys
-RUN apt-key list
-
-RUN apt update -y
+RUN apt-key list | grep expired
+ 
+# https://askubuntu.com/questions/74345/how-do-i-bypass-ignore-the-gpg-signature-checks-of-apt
+RUN apt update -y --allow-unauthenticated
 RUN apt install curl python3 python3-pip supervisor procps cron rsync -y
 
 # RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
