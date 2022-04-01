@@ -9,7 +9,8 @@ on:
       - v*
 
 env:
-  IMAGE_NAME: 'mkdocs-material-plantuml'
+  IMAGE_NAME: 'whatever'
+  FOO: 'bar'
 
 jobs:
 
@@ -47,7 +48,7 @@ jobs:
           # Use Docker `latest` tag convention
           [ "$VERSION" == "master" ] && VERSION=latest
 
-          VERSION=wp
+          VERSION=wp-$VERSION
           echo IMAGE_ID=$IMAGE_ID
           echo VERSION=$VERSION
 
@@ -88,7 +89,7 @@ jobs:
           # Use Docker `latest` tag convention
           [ "$VERSION" == "master" ] && VERSION=latest
 
-          VERSION=nginx
+          VERSION=nginx-$VERSION
           echo IMAGE_ID=$IMAGE_ID
           echo VERSION=$VERSION
 
@@ -131,7 +132,7 @@ jobs:
           # Use Docker `latest` tag convention
           [ "$VERSION" == "master" ] && VERSION=latest
 
-          VERSION=mysql
+          VERSION=mysql-$VERSION
           echo IMAGE_ID=$IMAGE_ID
           echo VERSION=$VERSION
 
