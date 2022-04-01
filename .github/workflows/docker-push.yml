@@ -103,8 +103,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup upterm session
-        uses: lhotari/action-upterm@v1
+      # - name: Setup upterm session
+      #   uses: lhotari/action-upterm@v1
 
       - name: Build image
         run: docker buildx build . --file docker_mysql/Dockerfile --tag $IMAGE_NAME
