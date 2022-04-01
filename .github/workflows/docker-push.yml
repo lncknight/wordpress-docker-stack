@@ -6,7 +6,7 @@ on:
       - master
 
     tags:
-      - \*
+      - v*
 
 env:
   IMAGE_NAME: 'whatever'
