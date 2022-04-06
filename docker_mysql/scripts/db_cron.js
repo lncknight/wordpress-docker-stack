@@ -27,6 +27,7 @@ let turnOffDb = async () => {
 
   try {
     // TODO minor stop supervisord, and turn off restart:always
+    // https://stackoverflow.com/questions/14479894/stopping-supervisord-shut-down
     await execSync('supervisorctl stop mysql')
     console.log('stopped local database')
   }
