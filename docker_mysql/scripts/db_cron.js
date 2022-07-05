@@ -41,10 +41,12 @@ let turnOffDb = async () => {
 let backup = async () => {
 
   if (BACKUP_DISABLE === "1"){
+    console.log('backup disabled, skip')
     return 
   }
 
   if (!BACKUP_S3_PREFIX){
+    console.log('no backup setting, skip')
     return 
   }
   
@@ -93,7 +95,12 @@ if (TEST_RUN_CRON === '0'){
 else if (TEST_RUN_CRON !== '1'){
   testCronSchedule = TEST_RUN_CRON
 }
-!!testCronSchedule && new CronJob(testCronSchedule, backup, null, true, 'Asia/Hong_Kong'); // test run
+
+if (testCronSchedule){
+  console.log('cron in test mode')
+  new CronJob(testCronSchedule, backup, null, true, 'Asia/Hong_Kong'); // test run
+}
+
 
 // live
 new CronJob('0 10 * * *', backup, null, true, 'Asia/Hong_Kong');
