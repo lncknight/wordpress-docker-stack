@@ -38,6 +38,5 @@ RUN microdnf install -y curl procps cronie rsync python3 python3-pip
 #     && pip install awscli
 RUN pip3 install supervisor awscli
 
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 RUN microdnf install nodejs -y
 RUN npm -g i nodemon
