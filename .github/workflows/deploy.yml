@@ -46,7 +46,7 @@ jobs:
           [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
 
           # Use Docker `latest` tag convention
-          [ "$VERSION" == "master" ] && VERSION=latest
+          [ "$VERSION" == "master" ] && VERSION=$(date +"%Y%m%d")
 
           VERSION=wp-$VERSION
           echo IMAGE_ID=$IMAGE_ID
@@ -87,7 +87,7 @@ jobs:
           [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
 
           # Use Docker `latest` tag convention
-          [ "$VERSION" == "master" ] && VERSION=latest
+          [ "$VERSION" == "master" ] && VERSION=$(date +"%Y%m%d")
 
           VERSION=nginx-$VERSION
           echo IMAGE_ID=$IMAGE_ID
@@ -130,7 +130,7 @@ jobs:
           [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
 
           # Use Docker `latest` tag convention
-          [ "$VERSION" == "master" ] && VERSION=latest
+          [ "$VERSION" == "master" ] && VERSION=$(date +"%Y%m%d")
 
           VERSION=mysql-$VERSION
           echo IMAGE_ID=$IMAGE_ID
