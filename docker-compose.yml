@@ -70,6 +70,7 @@ services:
       # - ./docker_mysql/.aws/credentials:/root/.aws/credentials
       - ./docker_mysql/scripts:/root/scripts
       - ./docker_mysql/scripts/supervisor/conf.d:/etc/supervisor/conf.d
+      - ./docker_mysql/scripts/supervisord.conf:/etc/supervisord.conf
       # - ./docker_mysql/scripts/schedule:/etc/cron.d/backup_schedule
     environment:
       MYSQL_ROOT_PASSWORD: "${DB_PASSWD}"
