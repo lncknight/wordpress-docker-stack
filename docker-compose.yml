@@ -7,7 +7,7 @@ services:
     image: lncknight/wordpress:nginx-1.20220406.1
     volumes:
       - ./docker_nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./docker_nginx/conf.d:/etc/nginx/conf.d/
+      - ${NGINX_CUSTOM_CONF:-./docker_nginx/conf.d}:/etc/nginx/conf.d/
       - ./docker_nginx/start.sh:/root/start.sh
       - ./docker_nginx/test.sh:/root/test.sh
       - ./docker_nginx/watcher.sh:/root/watcher.sh
