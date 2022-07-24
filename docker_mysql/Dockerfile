@@ -1,5 +1,5 @@
 # FROM mysql:5.7.26
-FROM mysql:5.7.37-debian
+FROM mysql:8.0.29
 
 # # https://ubuntuforums.org/showthread.php?t=2415997
 # ADD key.txt /root
@@ -31,11 +31,14 @@ FROM mysql:5.7.37-debian
 RUN apt update -y
 RUN apt install curl python3 python3-pip supervisor procps cron rsync -y
 
+RUN microdnf update -y
+RUN microdnf install -y curl python3 python3-pip supervisor procps cron rsync
+
 # RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
 #     && python get-pip.py \
 #     && pip install awscli
 RUN pip3 install awscli
 
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
-RUN apt install nodejs -y
+RUN microdnf install nodejs -y
 RUN npm -g i nodemon
