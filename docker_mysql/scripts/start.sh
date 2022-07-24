@@ -21,7 +21,8 @@ output=json
 npm i --prefix=/root/scripts
 
 # supervisor
-supervisord -c /etc/supervisord.conf
+# supervisord -c /etc/supervisord.conf # mysql 8
+supervisord -c /etc/supervisor/supervisord.conf
 # supervisorctl stop mysql
 # [[ $DB_USE_EXTERNAL -eq "1" ]] && supervisorctl stop mysql
 
