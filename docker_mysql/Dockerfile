@@ -1,6 +1,10 @@
 # FROM mysql:5.7.26
 FROM mysql:8.0.29
 
+
+RUN unlink /etc/localtime \
+    && ln -s /usr/share/zoneinfo/Asia/Hong_Kong /etc/localtime
+
 # # https://ubuntuforums.org/showthread.php?t=2415997
 # ADD key.txt /root
 
@@ -25,11 +29,6 @@ FROM mysql:8.0.29
 #     apt-key list > /dev/null
 # RUN apt-key list | grep expired -C 2
 
-
-# https://askubuntu.com/questions/74345/how-do-i-bypass-ignore-the-gpg-signature-checks-of-apt
-# RUN apt update -y --allow-unauthenticated
-RUN apt update -y
-RUN apt install curl python3 python3-pip supervisor procps cron rsync -y
 
 RUN microdnf update -y
 RUN microdnf install -y curl python3 python3-pip supervisor procps cron rsync
