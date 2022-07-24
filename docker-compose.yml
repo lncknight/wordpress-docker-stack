@@ -67,7 +67,7 @@ services:
     volumes:
       - ./mysql_data/data:/var/lib/mysql
       - ./docker_mysql/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
-      # - ./docker_mysql/.aws/credentials:/root/.aws/credentials
+      - ./docker_mysql/.aws/credentials:/root/.aws/credentials
       - ./docker_mysql/scripts:/root/scripts
       - ./docker_mysql/scripts/supervisor/conf.d:/etc/supervisor/conf.d
       - ./docker_mysql/scripts/supervisord.conf:/etc/supervisord.conf
