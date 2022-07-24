@@ -23,7 +23,7 @@ jobs:
     env:
       PREFIX: wp
       FOLDER: docker_wp
-      
+
     ############ COMMON SCRIPT ############
     steps:
       - uses: actions/checkout@v2
@@ -67,7 +67,7 @@ jobs:
 
     env:
       PREFIX: nginx
-      FODLER: docker_nginx
+      FOLDER: docker_nginx
 
     ############ COMMON SCRIPT ############
     steps:
@@ -111,7 +111,7 @@ jobs:
 
     env:
       PREFIX: mysql
-      FODLER: docker_mysql
+      FOLDER: docker_mysql
 
     ############ COMMON SCRIPT ############
     steps:
