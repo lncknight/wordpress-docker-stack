@@ -11,6 +11,7 @@ on:
 env:
   IMAGE_NAME: 'whatever'
   FOO: 'bar'
+  IMAGE_ID: lncknight/wordpress
 
 jobs:
 
@@ -21,12 +22,13 @@ jobs:
 
     env:
       PREFIX: wp
+      FOLDER: docker_wp
 
     steps:
       - uses: actions/checkout@v2
 
       - name: Build image
-        run: docker buildx build . --file docker_wp/Dockerfile --tag $IMAGE_NAME
+        run: docker buildx build . --file ${FOLDER}/Dockerfile --tag $IMAGE_NAME
 
       # - name: Log into registry
       #   run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
@@ -40,7 +42,6 @@ jobs:
 
       - name: Push image
         run: |
-          IMAGE_ID=lncknight/wordpress
 
           # Strip git ref prefix from version
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
@@ -51,7 +52,7 @@ jobs:
           # Use Docker `latest` tag convention
           [ "$VERSION" == "master" ] && VERSION=$(date +"%Y%m%d")
 
-          VERSION=wp-$VERSION
+          VERSION=${PREFIX}-$VERSION
           echo IMAGE_ID=$IMAGE_ID
           echo VERSION=$VERSION
 
@@ -65,12 +66,13 @@ jobs:
 
     env:
       PREFIX: nginx
+      FODLER: docker_nginx
 
     steps:
       - uses: actions/checkout@v2
 
       - name: Build image
-        run: docker buildx build . --file docker_nginx/Dockerfile --tag $IMAGE_NAME
+        run: docker buildx build . --file ${FOLDER}/Dockerfile --tag $IMAGE_NAME
 
       # - name: Log into registry
       #   run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
@@ -84,7 +86,6 @@ jobs:
 
       - name: Push image
         run: |
-          IMAGE_ID=lncknight/wordpress
 
           # Strip git ref prefix from version
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
@@ -95,7 +96,7 @@ jobs:
           # Use Docker `latest` tag convention
           [ "$VERSION" == "master" ] && VERSION=$(date +"%Y%m%d")
 
-          VERSION=nginx-$VERSION
+          VERSION=${PREFIX}-$VERSION
           echo IMAGE_ID=$IMAGE_ID
           echo VERSION=$VERSION
 
@@ -108,6 +109,7 @@ jobs:
 
     env:
       PREFIX: mysql
+      FODLER: docker_mysql
 
     steps:
       - uses: actions/checkout@v2
@@ -116,7 +118,7 @@ jobs:
       #   uses: lhotari/action-upterm@v1
 
       - name: Build image
-        run: docker buildx build . --file docker_mysql/Dockerfile --tag $IMAGE_NAME
+        run: docker buildx build . --file ${FOLDER}/Dockerfile --tag $IMAGE_NAME
 
       # - name: Log into registry
       #   run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
@@ -130,7 +132,6 @@ jobs:
 
       - name: Push image
         run: |
-          IMAGE_ID=lncknight/wordpress
 
           # Strip git ref prefix from version
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
