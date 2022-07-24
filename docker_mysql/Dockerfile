@@ -31,12 +31,12 @@ RUN unlink /etc/localtime \
 
 
 RUN microdnf update -y
-RUN microdnf install -y curl procps cronie rsync
+RUN microdnf install -y curl procps cronie rsync python3 python3-pip
 
 # RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
 #     && python get-pip.py \
 #     && pip install awscli
-RUN pip install supervisor awscli
+RUN pip3 install supervisor awscli
 
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 RUN microdnf install nodejs -y
