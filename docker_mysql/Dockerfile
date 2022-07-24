@@ -31,7 +31,7 @@ RUN unlink /etc/localtime \
 
 
 RUN microdnf update -y
-RUN microdnf install -y curl python3 python3-pip supervisor procps cron rsync
+RUN microdnf install -y curl python3 python3-pip procps cron rsync
 
 # RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
 #     && python get-pip.py \
