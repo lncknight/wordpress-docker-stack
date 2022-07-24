@@ -19,6 +19,9 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
 
+    env:
+      PREFIX: wp
+
     steps:
       - uses: actions/checkout@v2
 
@@ -60,6 +63,9 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
 
+    env:
+      PREFIX: nginx
+
     steps:
       - uses: actions/checkout@v2
 
@@ -100,6 +106,9 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
 
+    env:
+      PREFIX: mysql
+
     steps:
       - uses: actions/checkout@v2
 
@@ -132,7 +141,7 @@ jobs:
           # Use Docker `latest` tag convention
           [ "$VERSION" == "master" ] && VERSION=$(date +"%Y%m%d")
 
-          VERSION=mysql-$VERSION
+          VERSION=${PREFIX}-$VERSION
           echo IMAGE_ID=$IMAGE_ID
           echo VERSION=$VERSION
 
