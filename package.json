@@ -16,6 +16,7 @@
     "supervisor:mysql": "docker-compose exec mysql bash -c \"supervisorctl status\"",
     "supervisor:wp": "docker-compose exec wp bash -c \"supervisorctl status\"",
     "restart": "docker-compose down && docker-compose up -d --build",
+    "start": "docker-compose up -d --build",
     "up": "docker-compose up -d --build",
     "down": "docker-compose down",
     "debug": "docker-compose exec wp bash -c \"watch -n 3 du -sh /tmp/*\"",
