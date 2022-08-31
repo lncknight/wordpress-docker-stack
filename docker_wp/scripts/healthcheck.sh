@@ -1,13 +1,16 @@
 #/bin/bash
-content=`curl http://nginx/?health_check=1 -f -I`
-# content=`curl https://httpstat.us/200 -f -I`
+url=http://nginx/?health_check=1
+# url=https://httpstat.us/200
+# url=https://httpstat.us/403
+# url=https://httpstat.us/500
+status_code=`curl -o /dev/null -s -f -w "%{http_code}" $url`
 resCode=`echo $?`
-echo $content
-echo $resCode
+
+echo "$status_code-$resCode"
 
 if [[ $resCode != 0 ]];
 then 
-    if [[ `echo $content | grep 403` ]];
+    if [[ $status_code = "403" ]];
     then 
         echo 'ok.'
         exit 0
