@@ -1,10 +1,22 @@
 # upgrade blocker
 - mysql8 - data directory not comptibale from 5.7 directly, it requires mysqldump
 - php8 - many plugins not supported
+
 # start
 ```
 yarn up
 ```
+# using external database
+- ensure empty database initialise correctly
+
+```sh
+# comment out mysql_data mount
+# start mysql from scratch
+docker cp mysql:/var/lib/mysql mysql_data/data
+# mount back mysql_data
+# restart container
+```
+
 
 # nginx config on front server
 ```
