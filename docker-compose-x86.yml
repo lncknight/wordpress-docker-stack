@@ -42,7 +42,7 @@ services:
       options:
         max-size: 500m
     healthcheck:
-      test: ["CMD", "curl", "-f", "-X", "GET", "-I", "http://nginx/?health_check=1"]
+      test: ["CMD", "bash", "/root/scripts/healthcheck.sh"]
       interval: 0m10s
       timeout: 10s
       retries: 3
