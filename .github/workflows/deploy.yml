@@ -104,7 +104,7 @@ jobs:
       PREFIX: mysql
       FOLDER: docker_mysql
 
-    ############ COMMON SCRIPT buildx ############
+    ############ COMMON SCRIPT buildx (excluded arm64) ############
     steps:
       - uses: actions/checkout@v2
 
@@ -134,4 +134,4 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
       - name: Build image
-        run: docker buildx build --file ${FOLDER}/Dockerfile --platform linux/amd64,linux/arm64 $FOLDER --tag $IMAGE_ID:${PREFIX}-$(date +"%Y%m%d") --push
+        run: docker buildx build --file ${FOLDER}/Dockerfile --platform linux/amd64 $FOLDER --tag $IMAGE_ID:${PREFIX}-$(date +"%Y%m%d") --push
