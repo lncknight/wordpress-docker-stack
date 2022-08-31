@@ -1,6 +1,6 @@
 #!/bin/bash
 # aws credentials
-[[ ! -d ~/.aws ]] || mkdir -p ~/.aws
+[[ ! -d ~/.aws ]] && mkdir -p ~/.aws
 echo "[default]
 aws_access_key_id = ${BACKUP_AWS_ACCESS_KEY_ID}
 aws_secret_access_key = ${BACKUP_AWS_SECRET_ACCESS_KEY}
@@ -22,7 +22,7 @@ npm i --prefix=/root/scripts
 
 # supervisor
 # supervisord -c /etc/supervisord.conf # mysql 8
-supervisord -c /etc/supervisor/supervisord.conf
+supervisord -c /etc/supervisord.conf
 # supervisorctl stop mysql
 # [[ $DB_USE_EXTERNAL -eq "1" ]] && supervisorctl stop mysql
 
