@@ -59,7 +59,7 @@ services:
   
   mysql:
     # build: ./docker_mysql/
-    image: lncknight/wordpress:mysql-20220831
+    image: lncknight/wordpress:mysql-20220831-80
     # command: --default-authentication-plugin=mysql_native_password
     restart: always
     ports:
