@@ -1,6 +1,6 @@
 # upgrade blocker
-mysql8 - data directory not comptibale from 5.7 directly, it requires mysqldump
-php8 - many plugins not supported
+- mysql8 - data directory not comptibale from 5.7 directly, it requires mysqldump
+- php8 - many plugins not supported
 # start
 ```
 yarn up
