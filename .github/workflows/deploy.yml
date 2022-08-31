@@ -100,11 +100,21 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
 
+    strategy:
+      matrix:
+        version: [57, 80]
+        platforms: ["linux/amd64", "linux/amd64,linux/arm64"]
+        exclude:
+          - version: 57
+            platform: "linux/amd64,linux/arm64"
+          - version: 80
+            platform: "linux/amd64"
+
     env:
       PREFIX: mysql
       FOLDER: docker_mysql
 
-    ############ COMMON SCRIPT buildx (excluded arm64) ############
+    ############ COMMON SCRIPT buildx matrix ############
     steps:
       - uses: actions/checkout@v2
 
@@ -117,9 +127,9 @@ jobs:
         uses: actions/cache@v2
         with:
           path: /tmp/.buildx-cache
-          key: ${{ runner.os }}-buildx-v1-${{ github.sha }}
+          key: ${{ runner.os }}-${{ matrix.version }}-buildx-v1-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-buildx-v1-
+            ${{ runner.os }}-${{ matrix.version }}-buildx-v1-
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -134,4 +144,4 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
       - name: Build image
-        run: docker buildx build --file ${FOLDER}/Dockerfile --platform linux/amd64 $FOLDER --tag $IMAGE_ID:${PREFIX}-$(date +"%Y%m%d") --push
+        run: docker buildx build --file ${FOLDER}/Dockerfile.${{ matrix.version }} --platform ${{ matrix.platform }} $FOLDER --tag $IMAGE_ID:${PREFIX}-$(date +"%Y%m%d")-${{ matrix.version }} --push
