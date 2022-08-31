@@ -99,8 +99,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
       - name: Build image
-        # run: docker buildx build --file $IMAGE_NAME/Dockerfile.${{ matrix.version }} --platform linux/amd64 $IMAGE_NAME --tag lncknight/$IMAGE_NAME:$(date +"%Y%m%d")-${{ matrix.version}} --push
-        run: docker buildx build --file ${FOLDER}/Dockerfile --platform linux/amd64,linux/arm64 $IMAGE_ID --tag $IMAGE_ID:${PREFIX}-$(date +"%Y%m%d") --push
+        run: docker buildx build --file ${FOLDER}/Dockerfile --platform linux/amd64,linux/arm64 $FOLDER --tag $IMAGE_ID:${PREFIX}-$(date +"%Y%m%d") --push
 
   mysql:
 
