@@ -52,7 +52,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
       - name: Build image
-        run: docker buildx build --file ${FOLDER}/Dockerfile --platform linux/amd64,linux/arm64 $FOLDER --tag $IMAGE_ID:${PREFIX}-$(date +"%Y%m%d") --push
+        run: docker buildx build --file ${FOLDER}/Dockerfile --platform linux/amd64,linux/arm64 $FOLDER --tag $IMAGE_ID:$(date +"%Y%m%d")-${PREFIX} --push
 
   nginx:
 
@@ -93,7 +93,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
       - name: Build image
-        run: docker buildx build --file ${FOLDER}/Dockerfile --platform linux/amd64,linux/arm64 $FOLDER --tag $IMAGE_ID:${PREFIX}-$(date +"%Y%m%d") --push
+        run: docker buildx build --file ${FOLDER}/Dockerfile --platform linux/amd64,linux/arm64 $FOLDER --tag $IMAGE_ID:$(date +"%Y%m%d")-${PREFIX} --push
 
   mysql:
 
@@ -144,4 +144,4 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
       - name: Build image
-        run: docker buildx build --file ${FOLDER}/Dockerfile.${{ matrix.version }} --platform ${{ matrix.platform }} $FOLDER --tag $IMAGE_ID:${PREFIX}-$(date +"%Y%m%d")-${{ matrix.version }} --push
+        run: docker buildx build --file ${FOLDER}/Dockerfile.${{ matrix.version }} --platform ${{ matrix.platform }} $FOLDER --tag $IMAGE_ID:$(date +"%Y%m%d")-${PREFIX}-${{ matrix.version }} --push
