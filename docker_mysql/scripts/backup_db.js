@@ -103,5 +103,5 @@ if (testCronSchedule){
 
 
 // live
-new CronJob('0 10 * * *', backup, null, true, 'Asia/Hong_Kong');
+new CronJob('5 9 * * *', backup, null, true, 'Asia/Hong_Kong');
 new CronJob('* * * * *', turnOffDb, null, true, 'Asia/Hong_Kong');

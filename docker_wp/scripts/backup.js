@@ -135,5 +135,5 @@ if (!!testCronSchedule){
 }
 
 // live
-new CronJob('0 5 * * *', backup, null, true, 'Asia/Hong_Kong');
-new CronJob('0 10 * * *', backupWpUploads, null, true, 'Asia/Hong_Kong');
+new CronJob('0 9 * * *', backup, null, true, 'Asia/Hong_Kong');
+new CronJob('15 9 * * *', backupWpUploads, null, true, 'Asia/Hong_Kong');
