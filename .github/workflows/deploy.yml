@@ -18,6 +18,10 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
 
+    strategy:
+      matrix:
+        version: [74, 80, 81]
+
     env:
       PREFIX: wp
       FOLDER: docker_wp
@@ -35,9 +39,9 @@ jobs:
         uses: actions/cache@v2
         with:
           path: /tmp/.buildx-cache
-          key: ${{ runner.os }}-buildx-v1-${{ github.sha }}
+          key: ${{ runner.os }}-${{ matrix.version }}-buildx-v1-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-buildx-v1-
+            ${{ runner.os }}-${{ matrix.version }}-buildx-v1-
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -52,7 +56,8 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
       - name: Build image
-        run: docker buildx build --file ${FOLDER}/Dockerfile --platform linux/amd64,linux/arm64 $FOLDER --tag $IMAGE_ID:$(date +"%Y%m%d")-${PREFIX} --push
+        run: docker buildx build --file ${FOLDER}/Dockerfile.${{ matrix.version }} --platform linux/amd64 $FOLDER --tag $IMAGE_ID:$(date +"%Y%m%d")-${PREFIX}-${{ matrix.version }} --push
+        # run: docker buildx build --file ${FOLDER}/Dockerfile --platform linux/amd64,linux/arm64 $FOLDER --tag $IMAGE_ID:$(date +"%Y%m%d")-${PREFIX} --push
 
   nginx:
 
