@@ -21,6 +21,8 @@ jobs:
     strategy:
       matrix:
         version: [74, 80, 81]
+        platform: ["linux/amd64,linux/arm64"]
+        # platform: ["linux/amd64"]
 
     env:
       PREFIX: wp
@@ -56,8 +58,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
       - name: Build image
-        run: docker buildx build --file ${FOLDER}/Dockerfile.${{ matrix.version }} --platform linux/amd64 $FOLDER --tag $IMAGE_ID:$(date +"%Y%m%d")-${PREFIX}-${{ matrix.version }} --push
-        # run: docker buildx build --file ${FOLDER}/Dockerfile --platform linux/amd64,linux/arm64 $FOLDER --tag $IMAGE_ID:$(date +"%Y%m%d")-${PREFIX} --push
+        run: docker buildx build --file ${FOLDER}/Dockerfile.${{ matrix.version }} --platform ${{ matrix.platform }} $FOLDER --tag $IMAGE_ID:$(date +"%Y%m%d")-${PREFIX}-${{ matrix.version }} --push
 
   nginx:
 
