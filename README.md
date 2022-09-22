@@ -13,10 +13,14 @@ yarn up
 - ensure empty database initialise correctly
 
 ```sh
-# comment out mysql_data mount
+# comment out './mysql_data/data:/var/lib/mysql' amount
+# comment out 'command: sh /root/scripts/start.sh' startup script
+
 # start mysql from scratch
-docker cp mysql:/var/lib/mysql mysql_data/data
-# mount back mysql_data
+# copy mysql data to host
+docker cp $MYSQL_CONTAINER_NAME:/var/lib/mysql mysql_data/data
+
+# undo comment outs
 # restart container
 ```
 

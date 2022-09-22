@@ -16,6 +16,8 @@ output=json
 # printenv | sed 's/^\(.*\)$/export \1/g' | grep -v "PHP" | grep -v PWD | grep -v GPG_KEYS > /root/project_env.sh
 # chmod +x /root/project_env.sh
 
+chown -R www-data:www-data /var/www/html
+
 # backup script
 npm i --prefix=/root/scripts
 

@@ -20,6 +20,8 @@ output=json
 # backup script
 npm i --prefix=/root/scripts
 
+chown -R mysql:mysql /var/lib/mysql
+
 # supervisor
 # supervisord -c /etc/supervisord.conf # mysql 8
 supervisord -c /etc/supervisord.conf
