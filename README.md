@@ -12,6 +12,9 @@ yarn up
 # using external database
 - ensure empty database initialise correctly
 
+# newly setup
+## use fresh database in docker
+
 ```sh
 # comment out './mysql_data/data:/var/lib/mysql' amount
 # comment out 'command: sh /root/scripts/start.sh' startup script
@@ -22,6 +25,13 @@ docker cp $MYSQL_CONTAINER_NAME:/var/lib/mysql mysql_data/data
 
 # undo comment outs
 # restart container
+```
+# use latest wordpress
+```sh
+cd wp
+wget https://wordpress.org/latest.zip
+unzip latest.zip
+rm -rf latest.zip
 ```
 
 
