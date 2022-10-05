@@ -34,7 +34,6 @@ unzip latest.zip
 rm -rf latest.zip
 ```
 
-
 # nginx config on front server
 ```
     server {
@@ -117,6 +116,45 @@ https://wordpress.org/download/releases/
 ```
 cat wp-includes/version.php | grep -i wp_version
 ```
+
+# backup & restore
+
+## backup
+```sh
+
+# IMPORTANT execute in project root, e.g. /data/wordpress.com/www/
+cd PROEJCT_ROOT
+FOLDER=wordpress
+# FOLDER=data
+SUFFIX=`date +"%Y%m%d_%H%M%S"`
+
+mkdir -p restore/wp
+
+yarn down
+
+rsync -raph --stats --delete wp/$FOLDER/ restore/wp/$FOLDER-$SUFFIX
+# db run 3 times
+rsync -raph --stats --delete mysql_data/ restore/mysql_data-$SUFFIX
+
+yarn up
+
+```
+## restore
+```sh
+# make sure target folder can be overwritten
+cd PROEJCT_ROOT
+
+yarn down
+
+SUFFIX=20220930_110903
+FOLDER=wordpress
+
+rsync -raph --stats --delete restore/wp/$FOLDER-$SUFFIX/ wp/$FOLDER
+rsync -raph --stats --delete restore/mysql_data-$SUFFIX/ mysql_data
+
+yarn up
+```
+
 
 # TODO 2
 - support exclude folders from backup script BACKUP_WP_EXCLUDE_FOLDERS
