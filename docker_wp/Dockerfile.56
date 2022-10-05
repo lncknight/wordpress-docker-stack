@@ -1,4 +1,4 @@
-FROM wordpress:php7.4-apache
+FROM wordpress:php5.6-apache
 
 RUN apt update -y
 RUN apt install curl python3 python3-pip supervisor procps cron rsync -y
