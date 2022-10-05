@@ -110,6 +110,8 @@ let backupWpUploads = async () => {
     execSync(`rm -rf ${zipPath}`),
   ])
 
+  // TODO remove rest when error
+  
   console.log('DONE')
 
   console.log({
