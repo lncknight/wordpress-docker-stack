@@ -20,7 +20,7 @@ jobs:
 
     strategy:
       matrix:
-        version: [74, 80, 81]
+        version: [56, 74, 80, 81]
         platform: ["linux/amd64,linux/arm64"]
         # platform: ["linux/amd64"]
 
