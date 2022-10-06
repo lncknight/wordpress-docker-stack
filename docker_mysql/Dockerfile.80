@@ -7,6 +7,9 @@ RUN unlink /etc/localtime \
 RUN microdnf update -y
 RUN microdnf install -y curl procps cronie rsync python3 python3-pip
 
+# mysql8 - has no tar
+RUN microdnf install -y tar
+
 # RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
 #     && python get-pip.py \
 #     && pip install awscli
