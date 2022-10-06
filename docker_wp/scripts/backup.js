@@ -5,6 +5,22 @@ let execSync = promisify(exec)
 let { chain, trim } = require('lodash')
 let moment = require('moment')
 let bb = require('bluebird')
+
+// TODO add options
+// const argv = require("yargs")
+//   .option('account', {
+//     alias: ['a'],
+//     description: 'AWS Account',
+//     type: 'string',
+//     default: 'aaaa'
+//   })
+//   .option('cost', {
+//     description: 'get cost',
+//     type: 'boolean',
+//     default: false
+//   })
+//   .argv
+
 let {
   BACKUP_S3_WP_UPLOADS_PREFIX,
 
