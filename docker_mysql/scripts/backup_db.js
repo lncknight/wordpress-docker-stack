@@ -59,7 +59,7 @@ let backup = async () => {
 
   console.log('exporting..')
   // await execSync(`rsync -rhp --exclude="wp-content/updraft" --exclude="wp-content/uploads" /var/www/html/ ${backupDir}`)
-  await execSync(`/usr/bin/mysqldump -u${DB_USER} -p${DB_PASSWD} -h${DB_HOST} ${DB_NAME} > /tmp/${folder}/db.sql`)
+  await execSync(`/usr/bin/mysqldump -u${DB_USER} -p${DB_PASSWD} -h${DB_HOST} --column-statistics=0 ${DB_NAME} > /tmp/${folder}/db.sql`)
 
   console.log('zipping..')
   await execSync(`tar -zcf ${zipPath} ${backupDir}`)
