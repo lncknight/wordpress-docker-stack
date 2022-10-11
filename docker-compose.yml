@@ -74,7 +74,7 @@ services:
       # - ./docker_mysql/scripts/schedule:/etc/cron.d/backup_schedule
     environment:
       MYSQL_ROOT_PASSWORD: "${DB_PASSWD}"
-    command: sh /root/scripts/start.sh
+    command: ["bash", "/root/scripts/start.sh"]
     env_file: 
       - .env
     logging:
