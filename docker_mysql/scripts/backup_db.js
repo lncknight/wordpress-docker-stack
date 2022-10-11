@@ -17,6 +17,8 @@ let {
 
   DB_USE_EXTERNAL,
 
+  MYSQL_VERSION_TAG,
+
   TEST_RUN_CRON,
 } = process.env
 
@@ -59,7 +61,8 @@ let backup = async () => {
 
   console.log('exporting..')
   // await execSync(`rsync -rhp --exclude="wp-content/updraft" --exclude="wp-content/uploads" /var/www/html/ ${backupDir}`)
-  await execSync(`/usr/bin/mysqldump -u${DB_USER} -p${DB_PASSWD} -h${DB_HOST} --column-statistics=0 ${DB_NAME} > /tmp/${folder}/db.sql`)
+  let mysqlOpts = MYSQL_VERSION_TAG >= 80 ? `--column-statistics=0` : ''
+  await execSync(`/usr/bin/mysqldump -u${DB_USER} -p${DB_PASSWD} -h${DB_HOST} ${mysqlOpts} ${DB_NAME} > /tmp/${folder}/db.sql`)
 
   console.log('zipping..')
   await execSync(`tar -zcf ${zipPath} ${backupDir}`)
