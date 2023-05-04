@@ -6,6 +6,8 @@
   "scripts": {
     "update": "git pull origin master",
     "bash": "npm run bash:wp",
+    "backup:wp": "docker-compose exec wp node /root/scripts/backup.js data; docker-compose exec wp node /root/scripts/backup.js uploads",
+    "backup:db": "docker-compose exec mysql node /root/scripts/backup_db.js db",
     "bash:wp": "docker-compose exec wp bash",
     "bash:nginx": "docker-compose exec nginx bash",
     "bash:mysql": "docker-compose exec mysql bash",
