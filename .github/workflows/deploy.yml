@@ -18,6 +18,8 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
 
+    continue-on-error: true
+
     strategy:
       matrix:
         version: [56, 74, 80, 81]
