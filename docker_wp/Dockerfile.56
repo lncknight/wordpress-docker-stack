@@ -1,6 +1,6 @@
 FROM wordpress:php5.6-apache
 
-RUN apt update -y
+RUN apt update -y --no-install-recommends
 RUN apt install curl python3 python3-pip supervisor procps cron rsync -y
 
 # RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
