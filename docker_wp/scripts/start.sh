@@ -1,6 +1,7 @@
 #!/bin/bash
+
 # aws credentials
-[[ ! -d ~/.aws ]] || mkdir -p ~/.aws
+[ ! -d ~/.aws ] && mkdir -p ~/.aws
 echo "[default]
 aws_access_key_id = ${BACKUP_AWS_ACCESS_KEY_ID}
 aws_secret_access_key = ${BACKUP_AWS_SECRET_ACCESS_KEY}

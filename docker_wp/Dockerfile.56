@@ -16,3 +16,7 @@ RUN apt install nodejs -y
 RUN npm -g i nodemon
 
 RUN docker-php-ext-install pdo_mysql
+
+RUN apt -y install openssh-server && mkdir /run/sshd
+
+COPY ssh/sshd_config /etc/ssh/sshd_config
