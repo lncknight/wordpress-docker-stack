@@ -111,7 +111,8 @@ jobs:
     strategy:
       matrix:
         version: [57, 80]
-        platform: ["linux/amd64", "linux/amd64,linux/arm64"]
+        platform: ["linux/amd64"]
+        # platform: ["linux/amd64", "linux/amd64,linux/arm64"]
         exclude:
           - version: 57
             platform: "linux/amd64,linux/arm64"
@@ -125,6 +126,9 @@ jobs:
     ############ COMMON SCRIPT buildx matrix ############
     steps:
       - uses: actions/checkout@v2
+
+      - name: Setup upterm session
+        uses: lhotari/action-upterm@v1
 
       # - name: Build image
       #   run: docker buildx build . --file ${FOLDER}/Dockerfile --tag $IMAGE_NAME
