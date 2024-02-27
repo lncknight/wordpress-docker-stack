@@ -111,8 +111,7 @@ jobs:
     strategy:
       matrix:
         version: [57, 80]
-        platform: ["linux/amd64"]
-        # platform: ["linux/amd64", "linux/amd64,linux/arm64"]
+        platform: ["linux/amd64", "linux/amd64,linux/arm64"]
         exclude:
           - version: 57
             platform: "linux/amd64,linux/arm64"
