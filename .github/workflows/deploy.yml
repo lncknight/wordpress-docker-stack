@@ -23,8 +23,8 @@ jobs:
     strategy:
       matrix:
         version: [56, 74, 80, 81, 82]
-        platform: ["linux/amd64,linux/arm64"]
-        # platform: ["linux/amd64"]
+        # platform: ["linux/amd64,linux/arm64"]
+        platform: ["linux/amd64"]
 
     env:
       PREFIX: wp
