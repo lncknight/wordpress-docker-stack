@@ -1,4 +1,4 @@
-FROM mysql:5.7.37-debian
+FROM mysql:5.7.42-debian
 
 # # https://ubuntuforums.org/showthread.php?t=2415997
 # ADD key.txt /root
