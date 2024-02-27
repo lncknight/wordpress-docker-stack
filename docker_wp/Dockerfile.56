@@ -3,6 +3,9 @@ FROM wordpress:php5.6-apache
 RUN unlink /etc/localtime \
     && ln -s /usr/share/zoneinfo/Asia/Hong_Kong /etc/localtime
 
+# ref: https://unix.stackexchange.com/questions/743839/apt-get-update-failed-to-fetch-debian-amd64-packages-while-building-dockerfile-f
+RUN echo "deb http://archive.debian.org/debian stretch main" > /etc/apt/sources.list
+
 RUN apt update -y --no-install-recommends
 RUN apt install curl python3 python3-pip supervisor procps cron rsync -y
 
