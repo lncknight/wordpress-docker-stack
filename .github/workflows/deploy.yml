@@ -127,9 +127,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup upterm session
-        uses: lhotari/action-upterm@v1
-
       # - name: Build image
       #   run: docker buildx build . --file ${FOLDER}/Dockerfile --tag $IMAGE_NAME
 
@@ -142,7 +139,9 @@ jobs:
           key: ${{ runner.os }}-${{ matrix.version }}-buildx-v1-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-${{ matrix.version }}-buildx-v1-
-      
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
       -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
