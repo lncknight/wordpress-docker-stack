@@ -23,10 +23,10 @@ services:
           
   wp:
     # image: wordpress:php7.4-apache
-    build: ./docker_wp/
-    # image: lncknight/wordpress:20230504-wp-${PHP_VERSION_TAG:-74}
-    ports:
-      - "${SSH_PORT:-22}:22"
+    # build: ./docker_wp/
+    image: lncknight/wordpress:20230504-wp-${PHP_VERSION_TAG:-74}
+    # ports:
+    #   - "${SSH_PORT:-22}:22"
     volumes:
       - "${WP_DATA_DIR:-./wp/data}:/var/www/html" # Full wordpress project
       - ./docker_wp/scripts:/root/scripts
