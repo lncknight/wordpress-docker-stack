@@ -23,8 +23,8 @@ jobs:
     strategy:
       matrix:
         # version: [81, 82]
-        version: [56, 74, 80, 81, 82]
-        # version: [81]
+        # version: [56, 74, 80, 81, 82]
+        version: [81]
         platform: ["linux/amd64,linux/arm64"]
         # platform: ["linux/amd64"]
 
@@ -61,8 +61,8 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
-      # - name: Setup upterm session
-      #   uses: lhotari/action-upterm@v1
+      - name: Setup upterm session
+        uses: lhotari/action-upterm@v1
     
       - name: Build image
         run: docker buildx build --file ${FOLDER}/Dockerfile.${{ matrix.version }} --platform ${{ matrix.platform }} $FOLDER --tag $IMAGE_ID:$(date +"%Y%m%d")-${PREFIX}-${{ matrix.version }} --push
