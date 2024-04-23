@@ -8,6 +8,20 @@ https://hub.docker.com/repository/docker/lncknight/wordpress
 - mysql8 - data directory not comptibale from 5.7 directly, it requires mysqldump
 - php8 - many plugins not supported
 
+# debug building on github action
+add debug ssh on deploy.yml
+```yaml
+      - name: Setup upterm session
+        uses: lhotari/action-upterm@v1
+```
+
+test run on remote
+```sh
+docker exec -it del bash
+docker run --rm --name del -d  wordpress:php5.6-apache sleep 11111
+#  ....
+ ```
+
 # start
 ```
 yarn up
