@@ -1,8 +1,10 @@
-# FROM mysql:5.7.26
-FROM mysql:8.0.29
+FROM mysql:8.0.36-oracle
 
 RUN unlink /etc/localtime \
     && ln -s /usr/share/zoneinfo/Asia/Hong_Kong /etc/localtime
+
+# ref: https://stackoverflow.com/questions/71239450/gpg-keys-issue-while-installing-mysql-community-server
+RUN rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2023
 
 RUN microdnf update -y
 RUN microdnf install -y curl procps cronie rsync python3 python3-pip

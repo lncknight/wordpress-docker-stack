@@ -12,7 +12,7 @@ RUN apt install curl python3 python3-pip supervisor procps cron rsync -y
 RUN pip3 install awscli
 
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
-RUN apt install nodejs -y
+RUN apt install nodejs npm -y
 RUN npm -g i nodemon
 
 RUN docker-php-ext-install pdo_mysql
