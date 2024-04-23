@@ -116,8 +116,8 @@ jobs:
 
     strategy:
       matrix:
-        version: [57]
-        # version: [57, 80]
+        # version: [57]
+        version: [57, 80]
         platform: ["linux/amd64", "linux/amd64,linux/arm64"]
         exclude:
           - version: 57
@@ -158,8 +158,8 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
-      # - name: Setup upterm session
-      #   uses: lhotari/action-upterm@v1
+      - name: Setup upterm session
+        uses: lhotari/action-upterm@v1
 
       - name: Build image
         run: docker buildx build --file ${FOLDER}/Dockerfile.${{ matrix.version }} --platform ${{ matrix.platform }} $FOLDER --tag $IMAGE_ID:$(date +"%Y%m%d")-${PREFIX}-${{ matrix.version }} --push
