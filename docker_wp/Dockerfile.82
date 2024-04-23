@@ -10,7 +10,8 @@ RUN apt install curl python3 python3-pip supervisor procps cron rsync -y
 #     && python get-pip.py \
 #     && pip install awscli
 # ref: https://github.com/aws/aws-cli/issues/8036#issuecomment-1638544754
-RUN pip3 install awscli --no-build-isolation
+# RUN pip3 install awscli --no-build-isolation
+RUN apt -y install awscli
 
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 RUN apt install nodejs -y
