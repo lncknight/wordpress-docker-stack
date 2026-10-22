@@ -23,7 +23,7 @@ jobs:
     strategy:
       matrix:
         # version: [81, 82]
-        version: [56, 74, 80, 81, 82]
+        version: ["8.5.12"]
         # version: [81]
         platform: ["linux/amd64,linux/arm64"]
         # platform: ["linux/amd64"]
@@ -42,7 +42,7 @@ jobs:
       # ref: https://github.com/docker/build-push-action/blob/master/docs/advanced/cache.md
       # ref: https://evilmartians.com/chronicles/build-images-on-github-actions-with-docker-layer-caching
       - name: Cache Docker layers
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: /tmp/.buildx-cache
           key: ${{ runner.os }}-${{ matrix.version }}-buildx-v1-${{ github.sha }}
@@ -87,7 +87,7 @@ jobs:
       # ref: https://github.com/docker/build-push-action/blob/master/docs/advanced/cache.md
       # ref: https://evilmartians.com/chronicles/build-images-on-github-actions-with-docker-layer-caching
       - name: Cache Docker layers
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: /tmp/.buildx-cache
           key: ${{ runner.os }}-buildx-v1-${{ github.sha }}
@@ -139,7 +139,7 @@ jobs:
       # ref: https://github.com/docker/build-push-action/blob/master/docs/advanced/cache.md
       # ref: https://evilmartians.com/chronicles/build-images-on-github-actions-with-docker-layer-caching
       - name: Cache Docker layers
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: /tmp/.buildx-cache
           key: ${{ runner.os }}-${{ matrix.version }}-buildx-v1-${{ github.sha }}
