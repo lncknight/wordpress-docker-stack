@@ -1,0 +1,19 @@
+FROM wordpress:php8.4-apache@sha256:41815427d043bc629359121b347e2f1e4b7aba502062c369c2922f1d666ebf2a
+
+RUN unlink /etc/localtime \
+    && ln -s /usr/share/zoneinfo/Asia/Hong_Kong /etc/localtime
+
+RUN apt update -y
+RUN apt install curl python3 python3-pip supervisor procps cron rsync -y
+
+RUN apt -y install awscli
+
+RUN curl -sL https://deb.nodesource.com/setup_20.x | bash -
+RUN apt install nodejs -y
+RUN npm -g i nodemon
+
+RUN docker-php-ext-install pdo_mysql
+
+RUN apt -y install openssh-server && mkdir -p /run/sshd
+
+COPY ssh/sshd_config /etc/ssh/sshd_config

@@ -24,7 +24,7 @@ services:
   wp:
     # image: wordpress:php7.4-apache
     # build: ./docker_wp/
-    image: lncknight/wordpress:20230504-wp-${PHP_VERSION_TAG:-74}
+    image: lncknight/wordpress:${WP_IMAGE_DATE:-20230504}-wp-${PHP_VERSION_TAG:-74}
     # ports:
     #   - "${SSH_PORT:-22}:22"
     volumes:
@@ -80,11 +80,5 @@ services:
       - .env
     logging:
       options:
-        max-size: 500m 
-      
-    
-    
-    
-    
-    
+        max-size: 500m
     

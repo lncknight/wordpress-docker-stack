@@ -1,4 +1,4 @@
-FROM wordpress:php8.1-apache
+FROM wordpress:php8.2-apache@sha256:841fdef84001500e47ccc605a9429ecd0dc3df83735636645d2ba0563679998d
 
 RUN unlink /etc/localtime \
     && ln -s /usr/share/zoneinfo/Asia/Hong_Kong /etc/localtime
@@ -6,11 +6,6 @@ RUN unlink /etc/localtime \
 RUN apt update -y
 RUN apt install curl python3 python3-pip supervisor procps cron rsync -y
 
-# RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
-#     && python get-pip.py \
-#     && pip install awscli
-# ref: https://github.com/aws/aws-cli/issues/8036#issuecomment-1638544754
-# RUN pip3 install awscli --no-build-isolation
 RUN apt -y install awscli
 
 RUN curl -sL https://deb.nodesource.com/setup_20.x | bash -
@@ -19,6 +14,6 @@ RUN npm -g i nodemon
 
 RUN docker-php-ext-install pdo_mysql
 
-RUN apt -y install openssh-server && mkdir /run/sshd
+RUN apt -y install openssh-server && mkdir -p /run/sshd
 
 COPY ssh/sshd_config /etc/ssh/sshd_config

@@ -26,6 +26,18 @@ docker run --rm --name del -d  wordpress:php5.6-apache sleep 11111
 ```
 yarn up
 ```
+# select a PHP version
+Use `PHP_VERSION_TAG=82`, `83`, `84`, or `85` in `.env` for PHP 8.2.35, 8.3.36, 8.4.27, or 8.5.12 respectively.
+GitHub Actions publishes these as `YYYYMMDD-wp-82`, `YYYYMMDD-wp-83`, `YYYYMMDD-wp-84`, and `YYYYMMDD-wp-85`; `82` replaces the old PHP 8.2 build definition.
+Set `WP_IMAGE_DATE` to the successful GitHub Actions build date (`YYYYMMDD`) before pulling the new image; the default remains `20230504` for existing deployments.
+The new Dockerfiles pin the multi-platform WordPress Apache image digest to keep the exact PHP patch version on AMD64 and ARM64.
+
+Build locally without publishing:
+```sh
+docker build -f docker_wp/Dockerfile.85 -t lncknight/wordpress:local-wp-85 docker_wp
+WP_IMAGE_DATE=local PHP_VERSION_TAG=85 docker compose up -d
+```
+
 # using external database
 - ensure empty database initialise correctly
 

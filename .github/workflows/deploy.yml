@@ -23,7 +23,7 @@ jobs:
     strategy:
       matrix:
         # version: [81, 82]
-        version: ["8.5.12"]
+        version: ["82", "83", "84", "85"]
         # version: [81]
         platform: ["linux/amd64,linux/arm64"]
         # platform: ["linux/amd64"]
