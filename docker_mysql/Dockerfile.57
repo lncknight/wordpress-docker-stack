@@ -34,6 +34,8 @@ RUN unlink /etc/localtime \
 # ref: https://github.com/docker-library/mysql/issues/1016#issuecomment-1857280082
 RUN rm /etc/apt/sources.list.d/mysql.list
 
+RUN sed -i 's|deb.debian.org|archive.debian.org|g' /etc/apt/sources.list
+
 RUN apt update -y
 
 RUN apt install curl python3 python3-pip supervisor procps cron rsync -y
