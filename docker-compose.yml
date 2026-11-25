@@ -4,7 +4,7 @@ services:
 
   nginx:
     # build: ./docker_nginx
-    image: lncknight/wordpress:20230504-nginx
+    image: lncknight/wordpress:${WP_IMAGE_DATE:-20230504}-nginx
     volumes:
       - ./docker_nginx/nginx.conf:/etc/nginx/nginx.conf
       - ${NGINX_CUSTOM_CONF:-./docker_nginx/conf.d}:/etc/nginx/conf.d/

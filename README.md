@@ -38,6 +38,14 @@ docker build -f docker_wp/Dockerfile.85 -t lncknight/wordpress:local-wp-85 docke
 WP_IMAGE_DATE=local PHP_VERSION_TAG=85 docker compose up -d
 ```
 
+# HTTPS and Cloudflare
+Production deployments are expected to use Cloudflare in front of the `nginx` service. Cloudflare terminates TLS and forwards HTTP to the origin; the origin nginx configuration recognises HTTPS through either `CF-Visitor: {"scheme":"https"}` or `X-Forwarded-Proto: https`.
+
+- Keep the origin port private to Cloudflare or another trusted proxy. A client that can reach it directly can spoof a forwarded-proto header and bypass the origin's HTTP-to-HTTPS redirect.
+- Cloudflare is the supported production setup, but the stack remains compatible with another TLS-terminating reverse proxy that explicitly sends `X-Forwarded-Proto: https`.
+- Do not expose nginx directly as the public TLS endpoint: this image listens on HTTP port 80 and relies on the upstream proxy to supply the original scheme.
+- The origin redirects requests without a trusted HTTPS scheme to `https://$host$request_uri` before WordPress runs, preventing WordPress from caching an HTTPS-to-HTTPS self-redirect.
+
 # using external database
 - ensure empty database initialise correctly
 
